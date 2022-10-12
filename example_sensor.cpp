@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
 
     // define the services
     RobotServiceImpl robotService;
-    SensorServiceImpl sensorService();
+    SensorServiceImpl sensorService("world");
     grpc::EnableDefaultHealthCheckService(true);
     ServerBuilder builder;
     std::string address = "0.0.0.0:" + port;
