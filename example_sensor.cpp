@@ -44,6 +44,7 @@ using viam::robot::v1::RobotService;
 class SensorServiceImpl final : public SensorService::Service {
    private:
     std::string reading;
+    int called_count;
 
    public:
     SensorServiceImpl(std::string reading) : reading(reading){};
@@ -53,7 +54,9 @@ class SensorServiceImpl final : public SensorService::Service {
                                  GetReadingsResponse* response) override {
         auto reqName = request->name();
 
-        // response->());
+        auto body = response->mutable_readings();
+        body->operator[]("hello").set_string_value(reading);
+        body->operator[]("times_called").set_number_value(++called_count);
 
         return grpc::Status::OK;
     }
