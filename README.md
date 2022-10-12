@@ -10,8 +10,12 @@ Step 1 is to build the cpp protobuf interfaces:
 Assuming that goes relatively smoothly,
 `make sensorserver` should build the example_sensor executable
 
-On Mac OS X, I found I needed to run `export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"` to get `make sensorserver` to work.
-Otherwise, I would get errors on the includes of `<google/protobuf/port_def.inc>` and the like.
+On Mac OS X, you will need to update the PKG_CONFIG_PATH to be able to build the executable:
+```
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+make sensorserver
+```
+Otherwise, you may see would get errors about the includes of `<google/protobuf/port_def.inc>`.
 
 ## Adding the sensor server as a remote to viam-server
 On app.viam.com, you'll need to add the following block to the `REMOTES` portion of the `CONFIG`:
