@@ -7,7 +7,7 @@ SOURCES += $(GRPCDIR)/google/api/annotations.pb.cc $(GRPCDIR)/google/api/httpbod
 SOURCES += $(GRPCDIR)/google/api/http.pb.cc
 
 bufsetup:
-	sudo apt-get install -y ca-certificates protobuf-compiler-grpc libgrpc-dev libgrpc++-dev || brew install grpc openssl --quiet
+	sudo apt-get install -y ca-certificates protobuf-compiler-grpc libgrpc-dev libgrpc++-dev || brew install grpc openssl libhttpserver --quiet
 	GOBIN=`pwd`/grpc/bin go install github.com/bufbuild/buf/cmd/buf@v1.8.0
 	ln -sf `which grpc_cpp_plugin` grpc/bin/protoc-gen-grpc-cpp
 	pkg-config openssl || export PKG_CONFIG_PATH=$$PKG_CONFIG_PATH:`find \`which brew > /dev/null && brew --prefix\` -name openssl.pc | head -n1 | xargs dirname`
