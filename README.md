@@ -11,17 +11,19 @@ Assuming that goes relatively smoothly,
 `make sensorserver` should build the example_sensor executable
 
 On Mac OS X, I found I needed to run `export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"` to get `make sensorserver` to work.
-Otherwise, I would get errors on the includes of <google/protobuf/port_def.inc> and the like.
+Otherwise, I would get errors on the includes of `<google/protobuf/port_def.inc>` and the like.
 
 ## Adding the sensor server as a remote to viam-server
 On app.viam.com, you'll need to add the following block to the `REMOTES` portion of the `CONFIG`:
-```[
+```
+[
   {
     "name": "sensor",
     "prefix": true,
     "address": "localhost:8085"
   }
-]```
+]
+```
 
 You'll also need to run the server itself.
 This can be accomplished either by manually invoking the executable or you can have viam manage the process for you.
